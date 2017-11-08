@@ -4,5 +4,7 @@ class HomeController < ApplicationController
   end
 
   def about
+    @about = About.first
+    @address = Address.first
   end
 end

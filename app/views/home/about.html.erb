@@ -1,2 +1,8 @@
-<h1>Home#about</h1>
-<p>Find me in app/views/home/about.html.erb</p>
+<h1>About <%= @about.name %></h1>
+<h2><%= @about.description %></h2>
+
+<h2>Contact Us:</h2>
+<h3>Phone: <%= @address.phone%></h3>
+<h3>Address1: <%= @address.addressline1%></h3>
+<h3>City: <%= @address.city%></h3>
+<h3>PostalCode: <%= @address.postalcode%></h3>
