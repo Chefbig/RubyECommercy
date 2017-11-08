@@ -9,6 +9,10 @@
     <h3>Product Description:<%= product.description  %></h3>
     <h3>Stock_Quantity: <%= product.stock_quantity  %></h3>
     <h3>Price: <%= product.price  %></h3>
+      <% product.images.each do |image| %>
+          <p><%= image_tag image.file_name %></p>
+          <% end %>
+      <h3>Price: <%= product.images.first.file_name  %></h3>
     </div>
 
 <% end %>
