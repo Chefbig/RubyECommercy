@@ -5,19 +5,15 @@
   <a href="#" class="btn btn-primary btn-lg">Hire me!</a>
 </header>
 
-<div class="row">
-<h1> All products</h1>
+<div class="navbar-nav"><%= paginate @products %></div>
+<div class="row text-center">
+      <% for product in @products %>
+          <div class="col-lg-3 col-md-6 mb-4">
+            <strong>Product Name: </strong><%= product.name  %>
+            <strong>Product Description: </strong><%= product.description  %>
+            <strong>Stock_Quantity: </strong><%= product.stock_quantity  %>
+            <strong>Price: </strong><%= product.price  %>
+          </div>
 
-<% @products.each do |product| %>
-    <div class="product">
-    <h2>Product Name: <%= product.name  %></h2>
-    <h3>Product Description:<%= product.description  %></h3>
-    <h3>Stock_Quantity: <%= product.stock_quantity  %></h3>
-    <h3>Price: <%= product.price  %></h3>
-      <% product.images.each do |image| %>
-          <p><%= image_tag image.file_name %></p>
-          <% end %>
-    </div>
-
-<% end %>
+      <% end %>
 </div>

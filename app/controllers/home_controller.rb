@@ -1,6 +1,7 @@
 class HomeController < ApplicationController
   def index
-    @products = Product.all
+    #@products = Product.all
+    @products = Product.order(:id).page params[:page]
   end
 
   def about
