@@ -23,7 +23,21 @@
                 <span class="label-icon">New</span>
               </a>
             </li>
-            <!--add categories here-->
+            <li>
+              <a href="#">
+                <span class="glyphicon glyphicon-book"></span>
+                <span class="label-icon">Recently Updated</span>
+              </a>
+            </li>
+            <% for category in @categories %>
+                <li>
+                  <a href="#">
+                    <span class="glyphicon glyphicon-book"></span>
+                    <span class="label-icon"><%= category.name %></span>
+                  </a>
+                </li>
+
+            <% end %>
           </ul>
         </div>
 
