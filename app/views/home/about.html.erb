@@ -1,8 +1,21 @@
-<h1>About <%= @about.name %></h1>
-<h2><%= @about.description %></h2>
+<!-- Jumbotron Header -->
+<header class="jumbotron my-4">
+  <h1 class="display-3">Nico's Ruby Ecommercy website!</h1>
+  <p class="lead">This is the final project of Full-stack web development.</p>
+  <a href="#" class="btn btn-primary btn-lg">Hire me!</a>
+</header>
+<div class="row">
+  <div class="col-lg-12">
+    <h2>About <%= @about.name %></h2>
+    <p class="mb-0"><%= @about.description %></p>
 
-<h2>Contact Us:</h2>
-<h3>Phone: <%= @address.phone%></h3>
-<h3>Address1: <%= @address.addressline1%></h3>
-<h3>City: <%= @address.city%></h3>
-<h3>PostalCode: <%= @address.postalcode%></h3>
+    <h2>Contact Us:</h2>
+      <ul>
+        <li>Phone: <%= @address.phone%>
+          </li>
+        <li>Address1: <%= @address.addressline1%></li>
+        <li>City: <%= @address.city%></li>
+        <li>PostalCode: <%= @address.postalcode%></li>
+      </ul>
+  </div>
+</div>
