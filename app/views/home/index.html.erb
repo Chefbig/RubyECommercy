@@ -4,9 +4,12 @@
   <p class="lead">This is the final project of Full-stack web development.</p>
   <a href="#" class="btn btn-primary btn-lg">Hire me!</a>
 </header>
+<div lass="row"><%= render "search" %>
+  <div class="navbar-nav"><%= paginate @products %>
 
-<div class="navbar-nav"><%= paginate @products %></div>
-<div class="row text-center">
+  </div>
+  <div class="row">
+
       <% for product in @products %>
           <div class="col-lg-3 col-md-6 mb-4">
             <strong>Product Name: </strong><%= product.name  %>
@@ -16,4 +19,5 @@
           </div>
 
       <% end %>
+  </div>
 </div>
