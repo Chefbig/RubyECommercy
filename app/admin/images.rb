@@ -11,5 +11,16 @@ ActiveAdmin.register Image do
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
-  permit_params :name, :description, :file_name, :product_id
+  permit_params :name, :description, :product_id, :file_name
+
+  form :html => { :multipart => true } do |f|
+    f.inputs "Add images" do
+      f.input :name
+      f.input :description
+      f.input :product_id
+      f.input :file_name, :as => :file #, input_html: { multiple: true }
+    end
+    f.actions
+  end
+
 end
