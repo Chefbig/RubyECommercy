@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'product/find'
+
+  get 'product/order'
+
   devise_for :users
   root to: 'home#index'
 
