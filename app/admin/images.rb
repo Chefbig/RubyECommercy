@@ -17,8 +17,9 @@ ActiveAdmin.register Image do
     f.inputs "Add images" do
       f.input :name
       f.input :description
-      f.input :product_id
-      f.input :file_name, :as => :file #, input_html: { multiple: true }
+      f.input :product
+      f.input :file_name, :as => :file, :hint => f.object.file_name.present? \
+          ? image_tag(f.object.file_name.url(:thumb)) : content_tag(:span, "No image yet")
     end
     f.actions
   end
