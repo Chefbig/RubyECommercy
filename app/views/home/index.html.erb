@@ -11,13 +11,14 @@
   <div class="row">
 
       <% for product in @products %>
-          <div class="col-lg-3 col-md-6 mb-4">
-            <div><strong>Product Name: </strong><%= product.name  %></div>
-            <div><strong>Product Description: </strong><%= product.description  %></div>
-            <div><strong>Stock_Quantity: </strong><%= product.stock_quantity  %></div>
-            <div><strong>Price: </strong><%= product.price  %></div>
+        <div class="col-lg-3 col-md-6 mb-4">
+          <%= link_to product_find_path, :action => 'go' do %>
+              <div><strong>Product Name: </strong><%= product.name  %></div>
+              <div><strong>Product Description: </strong><%= product.description  %></div>
+              <div><strong>Stock_Quantity: </strong><%= product.stock_quantity  %></div>
+              <div><strong>Price: </strong><%= product.price  %></div>
+        <% end %>
         </div>
-
       <% end %>
   </div>
 </div>
