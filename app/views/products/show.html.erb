@@ -1,0 +1,13 @@
+<div class="col-lg-8 col-md-10 mx-auto">
+  <div><strong>Product Name: </strong><%= @product.name  %></div>
+  <div><strong>Product Description: </strong><%= @product.description  %></div>
+  <div><strong>Price: </strong><%= @product.price  %></div>
+
+  <% if @product.images.size > 0 %>
+        <% @product.images.each do |image| %>
+          <%= image_tag image.file_name %>
+        <% end %>
+  <% else %>
+  <p>No images</p>
+  <% end %>
+</div>
