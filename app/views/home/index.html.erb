@@ -4,8 +4,13 @@
   <p class="lead">This is the final project of Full-stack web development.</p>
   <a href="#" class="btn btn-primary btn-lg">Hire me!</a>
 </header>
-<div lass="row">
+
+<div>
   <%= render "search" %>
+</div>
+
+<div class="row">
+
   <div class="navbar-nav">
     <%= paginate @products %>
   </div>
