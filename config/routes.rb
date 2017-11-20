@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
 
-  resources :products
+  get 'address/show'
 
+  get 'address/add_address'
+
+  get 'address/update'
+
+  resources :products
+  get 'products/search'
   devise_for :users
   root to: 'home#index'
 

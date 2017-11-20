@@ -9,6 +9,13 @@
   <%= render "search" %>
 </div>
 
+<div class="mx-auto">
+<%= form_tag products_search_url, method: :get do |f| %>
+    <%= select_tag 'category', options_for_select(Category.all.map{|el| [el.name, el.id]}) %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search Product", class:"form-control" %>
+    <%= submit_tag 'Search',class: "btn btn-search btn-default" %>
+<% end %>
+</div>
 <div class="row">
 
   <div class="navbar-nav">
@@ -25,7 +32,10 @@
               <h4 class="card-title"><%= product.name  %></h4>
               <p class="card-text"><%= product.description  %></p>
             </div>
-            <div class="card-footer"><%= link_to 'Find Out More!', product, :class=>"btn btn-primary" %></div>
+            <div class="card-footer">
+              <%= link_to 'Find Out More!', product, :class=>"btn btn-secondary" %>
+              <%= link_to 'Buy it!', product, :class=>"btn btn-primary" %>
+            </div>
           </div>
 
 
