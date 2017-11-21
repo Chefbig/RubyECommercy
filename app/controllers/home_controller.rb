@@ -1,4 +1,5 @@
 class HomeController < ApplicationController
+
   def index
     #@products = Product.all
     @categories = Category.all.order(:id)
@@ -10,6 +11,5 @@ class HomeController < ApplicationController
     @about = About.first
     @address = Address.first
   end
-
 
 end

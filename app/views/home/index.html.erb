@@ -1,9 +1,10 @@
-<!-- Jumbotron Header -->
-<header class="jumbotron my-4">
-  <h1 class="display-3">Nico's Ruby Ecommercy website!</h1>
-  <p class="lead">This is the final project of Full-stack web development.</p>
-  <a href="#" class="btn btn-primary btn-lg">Hire me!</a>
-</header>
+
+<div>
+  <%= render "jumbotron" %>
+</div>
+<div>
+  <%= render "layouts/cart" %>
+</div>
 
 <div>
   <%= render "search" %>
@@ -16,30 +17,16 @@
     <%= submit_tag 'Search',class: "btn btn-search btn-default" %>
 <% end %>
 </div>
+
 <div class="row">
-
-  <div class="navbar-nav">
-    <%= paginate @products %>
-  </div>
-  <div class="row">
-
     <% @products.each do |product| %>
-        <div class="col-lg-3 col-md-6 mb-4">
-          <div class="card">
-                <%= product.images.size > 0 ?image_tag(product.images.first.file_name.url(:thumb), :class =>"card-img-top") : content_tag(:span, "No image yet") %>
+      <div class="col-lg-3 col-md-6 mb-4">
 
-            <div class="card-body">
-              <h4 class="card-title"><%= product.name  %></h4>
-              <p class="card-text"><%= product.description  %></p>
-            </div>
-            <div class="card-footer">
-              <%= link_to 'Find Out More!', product, :class=>"btn btn-secondary" %>
-              <%= link_to 'Buy it!', product, :class=>"btn btn-primary" %>
-            </div>
-          </div>
+        <%= render partial: "product", object: product %>
 
 
-        </div>
+      </div>
+
     <% end %>
-  </div>
+    <%= paginate @products%>
 </div>
