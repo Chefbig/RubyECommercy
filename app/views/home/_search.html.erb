@@ -1,6 +1,5 @@
-<%= form_tag products_search_url, method: :get do |f| %>
+<%= form_tag products_search_path, method: :get do |f| %>
     <%= select_tag 'category', options_for_select(Category.all.map{|el| [el.name, el.id]}) %>
     <%= text_field_tag :search, params[:search], placeholder: "Search Product"  %>
     <%= submit_tag 'Search',class: "btn btn-search btn-default" %>
 <% end %>
-<div class="clearfix">　</div>

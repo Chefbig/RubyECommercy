@@ -1,3 +1,6 @@
+<%= debug params %>
+
+<% if !@product.nil? %>
 <div class="col-lg-8 col-md-10 mx-auto">
   <%= render "/carts/shopping_cart" %>
 </div>
@@ -15,3 +18,19 @@
   <p>No images</p>
   <% end %>
 </div>
+<% elsif !@products.nil? %>
+    <div class="row">
+      <% @products.each do |product| %>
+          <div class="col-lg-3 col-md-6 mb-4">
+
+            <%= render partial: "/home/product", object: product %>
+
+
+          </div>
+
+      <% end %>
+
+    </div>
+<% else %>
+    <div>No result returned</div>
+<% end %>

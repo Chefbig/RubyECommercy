@@ -7,6 +7,7 @@ class ProductsController < ApplicationController
     # "commit"=>"Search", "controller"=>"products",
     # "action"=>"show", "id"=>"search"}
     #@products =  Product.find(params[:id])
+    render "/products/search"
   end
 
   def show
@@ -20,7 +21,21 @@ class ProductsController < ApplicationController
 
   private
   def set_product
-    @product = Product.find(params[:id])
+    if !params[:id].is_a? Numeric
+      keyword  = "%" + params[:search] + "%"
+
+      if params[:category].blank? || params[:category] == '10'
+        @products = Product.where("name like (?) OR description like (?)", keyword, keyword)
+      else
+        cat = params[:category]
+        @products = Category.find(cat).product.where("name like (?) OR description like (?)", keyword, keyword)
+      end
+
+
+    else
+      @product = Product.find(params[:id])
+    end
+
   end
 
   def product_params

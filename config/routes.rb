@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'categories/index'
+
   resources :carts, only: [:show] do
     member do
       post :add
@@ -13,6 +15,8 @@ Rails.application.routes.draw do
   get 'address/update'
 
   resources :products
+  resources :categories
+
   get 'products/search'
   devise_for :users
   root to: 'home#index'
