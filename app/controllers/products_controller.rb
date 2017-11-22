@@ -21,8 +21,13 @@ class ProductsController < ApplicationController
 
   private
   def set_product
-    if !params[:id].is_a? Numeric
-      keyword  = "%" + params[:search] + "%"
+    if params[:commit]=="Search"
+      if params[:search].nil?
+        keyword = "%"
+      else
+        keyword  = "%" + params[:search] + "%"
+      end
+
 
       if params[:category].blank? || params[:category] == '10'
         @products = Product.where("name like (?) OR description like (?)", keyword, keyword)

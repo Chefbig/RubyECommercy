@@ -1,4 +1,3 @@
-
   <div class="card">
     <div class="card-body">
       <%= product.images.size > 0 ?image_tag(product.images.first.file_name.url(:thumb), :class =>"card-img-top") : content_tag(:span, "No image yet") %>
