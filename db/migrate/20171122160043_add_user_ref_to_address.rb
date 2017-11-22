@@ -1,5 +1,5 @@
 class AddUserRefToAddress < ActiveRecord::Migration[5.1]
   def change
-    add_reference :addresses, :user, foreign_key: true
+    add_column :addresses, :user, :reference
   end
 end

@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  get 'about/show'
+
+  resources :addresses
   get 'categories/index'
 
   resources :carts, only: [:show] do

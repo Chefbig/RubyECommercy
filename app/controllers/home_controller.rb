@@ -9,7 +9,6 @@ class HomeController < ApplicationController
 
   def about
     @about = About.first
-    @address = Address.first
   end
 
 end

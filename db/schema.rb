@@ -10,14 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171122153029) do
+ActiveRecord::Schema.define(version: 20171122161647) do
 
-  create_table "abouts", force: :cascade do |t|
-    t.string "name"
-    t.text "description"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
+# Could not dump table "abouts" because of following StandardError
+#   Unknown type 'strings' for column 'city'
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -33,21 +29,8 @@ ActiveRecord::Schema.define(version: 20171122153029) do
     t.index ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
   end
 
-  create_table "addresses", force: :cascade do |t|
-    t.string "firstname"
-    t.string "lastname"
-    t.string "phone"
-    t.string "addressline1"
-    t.string "addressline2"
-    t.string "city"
-    t.string "postalcode"
-    t.boolean "is_billing_address"
-    t.boolean "is_shipping_address"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "user_id"
-    t.index ["user_id"], name: "index_addresses_on_user_id"
-  end
+# Could not dump table "addresses" because of following StandardError
+#   Unknown type 'reference' for column 'user'
 
   create_table "admin_users", force: :cascade do |t|
     t.string "email", default: "", null: false
