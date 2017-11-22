@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :addresses
   get 'about/show'
 
   get 'categories/index'

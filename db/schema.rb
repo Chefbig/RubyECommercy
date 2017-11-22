@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171122191852) do
+ActiveRecord::Schema.define(version: 20171122195231) do
 
 # Could not dump table "abouts" because of following StandardError
 #   Unknown type 'strings' for column 'city'
@@ -27,6 +27,22 @@ ActiveRecord::Schema.define(version: 20171122191852) do
     t.index ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id"
     t.index ["namespace"], name: "index_active_admin_comments_on_namespace"
     t.index ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
+  end
+
+  create_table "addresses", force: :cascade do |t|
+    t.string "firstname"
+    t.string "lastname"
+    t.string "phone"
+    t.string "addressline1"
+    t.string "addressline2"
+    t.string "city"
+    t.string "postalcode"
+    t.boolean "is_billing_address"
+    t.boolean "is_shipping_address"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_addresses_on_user_id"
   end
 
   create_table "admin_users", force: :cascade do |t|
@@ -97,7 +113,6 @@ ActiveRecord::Schema.define(version: 20171122191852) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["id"], name: "index_addresses_on_user_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
