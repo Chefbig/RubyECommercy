@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  resources :carts, only: [:show] do
+    member do
+      post :add
+    end
+  end
+
   get 'address/show'
 
   get 'address/add_address'

@@ -1,53 +1,6 @@
-    <form class="navbar-form navbar-search form-inline" role="search">
-      <div class="input-group">
-
-        <div class="input-group-btn">
-          <button type="button" class="btn btn-search btn-default dropdown-toggle" data-toggle="dropdown">
-            <span class="glyphicon glyphicon-search"></span>
-            <span class="label-icon">Search Product</span>
-            <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu pull-left" role="menu">
-            <li>
-              <a href="#">
-                <span class="glyphicon glyphicon-usd"></span>
-                <span class="label-icon">On Sale</span>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <span class="glyphicon glyphicon-share"></span>
-                <span class="label-icon">New</span>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <span class="glyphicon glyphicon-calendar"></span>
-                <span class="label-icon">Recently Updated</span>
-              </a>
-            </li>
-            <% for category in @categories %>
-                <li>
-                  <a href="#">
-                    <span class="glyphicon glyphicon-gift"></span>
-                    <span class="label-icon"><%= category.name %></span>
-                  </a>
-                </li>
-
-            <% end %>
-          </ul>
-        </div>
-
-        <input type="text" class="form-control">
-
-        <div class="input-group-btn">
-          <button type="button" class="btn btn-search btn-default">
-            GO
-          </button>
-
-
-        </div>
-      </div>
-    </form>
-
-    <div class="clearfix">　</div>
+<%= form_tag products_search_url, method: :get do |f| %>
+    <%= select_tag 'category', options_for_select(Category.all.map{|el| [el.name, el.id]}) %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search Product"  %>
+    <%= submit_tag 'Search',class: "btn btn-search btn-default" %>
+<% end %>
+<div class="clearfix">　</div>

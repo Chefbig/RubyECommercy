@@ -7,6 +7,6 @@
     </div>
     <div class="card-footer">
       <%= link_to 'Details', product, :class=>"btn btn-secondary" %>
-      <%= link_to 'Add to Cart!', product, :class=>"btn btn-primary" %>
+      <%= button_to 'Add to Cart!', add_cart_path(id: product.id), mothod: :post, :class=>"btn btn-primary" %>
     </div>
   </div>

@@ -3,20 +3,14 @@
   <%= render "jumbotron" %>
 </div>
 <div>
-  <%= render "layouts/cart" %>
+  <%= render "/carts/shopping_cart" %>
 </div>
-
-<div>
-  <%= render "search" %>
-</div>
-
 <div class="mx-auto">
-<%= form_tag products_search_url, method: :get do |f| %>
-    <%= select_tag 'category', options_for_select(Category.all.map{|el| [el.name, el.id]}) %>
-    <%= text_field_tag :search, params[:search], placeholder: "Search Product", class:"form-control" %>
-    <%= submit_tag 'Search',class: "btn btn-search btn-default" %>
-<% end %>
+  <div class="col-lg-6 lg-offset-3">
+  <%= render "search" %>
+  </div>
 </div>
+
 
 <div class="row">
     <% @products.each do |product| %>
