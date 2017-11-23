@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :provinces
   resources :addresses
   get 'about/show'
 

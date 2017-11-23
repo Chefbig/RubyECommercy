@@ -772,3 +772,10 @@ body {
 .glyphicon-collapse-top:before {
   content: "\e160";
 }
+
+.empty_cart {
+  background-image: url("/images/empty_shopping_cart.png");
+  background-size: 50%;
+  min-height: 256px;
+  background-repeat: no-repeat;
+}

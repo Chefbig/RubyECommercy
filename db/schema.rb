@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171122195231) do
+ActiveRecord::Schema.define(version: 20171123024514) do
 
 # Could not dump table "abouts" because of following StandardError
 #   Unknown type 'strings' for column 'city'
@@ -92,6 +92,16 @@ ActiveRecord::Schema.define(version: 20171122195231) do
     t.string "description"
     t.integer "stock_quantity"
     t.decimal "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "provinces", force: :cascade do |t|
+    t.string "name"
+    t.decimal "gst"
+    t.decimal "pst"
+    t.decimal "hst"
+    t.decimal "qst"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
