@@ -15,6 +15,10 @@ class CartsController < ApplicationController
     redirect_to :root
   end
 
+  def update
+
+  end
+
   def initialize_session
     if session[:cart].nil?
       session[:cart] = Hash.new

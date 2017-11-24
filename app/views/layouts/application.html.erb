@@ -27,7 +27,7 @@
             </li>
 
             <% if user_signed_in?  %>
-                <li class="nav-item">  <%= link_to "Welcome " + current_user.email.split("@").first.capitalize + "!", "address(current_user)", class: "nav-link" %> </li>
+                <li class="nav-item">  <%= link_to "Welcome " + current_user.email.split("@").first.capitalize + "!", me_show_path, class: "nav-link" %> </li>
                 <li class="nav-item">
                   <%= link_to '/carts/show' ,class: "nav-link" do %>
                       <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>

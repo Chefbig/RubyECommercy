@@ -7,7 +7,7 @@
   <div><strong>Product Name: </strong><%= @product.name  %></div>
   <div><strong>Product Description: </strong><%= @product.description  %></div>
   <div><strong>Price: </strong><%= @product.price  %></div>
-  <div><%= link_to 'Add to Cart!', @product, :class=>"btn btn-primary" %></div>
+  <div><%= button_to 'Add to Cart!', add_cart_path(id: @product.id), mothod: :post, :class=>"btn btn-primary" %></div>
   <% if @product.images.size > 0 %>
         <% @product.images.each do |image| %>
           <%= image_tag image.file_name %>

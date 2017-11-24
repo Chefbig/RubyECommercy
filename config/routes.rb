@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'me/show'
+
   resources :line_items
   resources :orders
   resources :provinces
