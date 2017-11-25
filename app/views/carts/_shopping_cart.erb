@@ -36,15 +36,15 @@
       <% end %>
 
     <tr>
-      <th colspan="2"><span class="pull-right">Sub Total</span></th>
+      <th><span class="pull-right">Sub Total</span></th>
       <th><a href="#" class="btn btn-primary">Update Cart</a></th>
+      <th></th>
       <th><%= @sub_total %></th>
     </tr>
 
-    <tr>
-      <td colspan="2"></td>
-      <td colspan="2"> <%= link_to "Checkout", new_order_path, class: "glyphicon glyphicon-shopping-cart pull-right btn btn-success" %>
-    </tr>
+    <%= render "/carts/tax" %>
+    <%= render "/carts/payment" %>
+
   </tbody>
 </table>
 <% end %>
