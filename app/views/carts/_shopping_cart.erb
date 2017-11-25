@@ -1,4 +1,12 @@
 <h1>Shopping Cart</h1><hr>
+<h3>Stripe Customer</h3>
+<%= debug @customer %>
+
+<h3>Stripe Charge</h3>
+<%= debug @charge %>
+<% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+<% end %>
 <% if session[:cart].nil? || session[:cart].empty?%>
     <div class="col-md-8 col-md-offset-2 empty_cart">
       WoW! You cart is still empty :(
@@ -43,7 +51,7 @@
     </tr>
 
     <%= render "/carts/tax" %>
-    <%= render "/carts/payment" %>
+    <%= render "/charges/payment"%>
 
   </tbody>
 </table>
