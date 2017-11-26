@@ -1,7 +1,4 @@
 <h3>Shopping Cart</h3><hr>
-<% if flash[:notice] %>
-    <div class="notice"><%= flash[:notice] %></div>
-<% end %>
 <% if session[:cart].nil? || session[:cart].empty?%>
     <div class="col-md-8 col-md-offset-2 empty_cart">
       WoW! You cart is still empty :(
@@ -47,7 +44,7 @@
 
     <%= render "/carts/tax" %>
 
-      <%= @grant_total = @sub_total %>
+      <% @grant_total = @sub_total %>
       <% session[:order] = Hash.new %>
       <% session[:order]["total"] = (@grant_total.to_f * 100).to_i %>
       <% session[:order]['description'] = "Description" %>
