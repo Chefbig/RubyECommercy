@@ -1,6 +1,11 @@
-
+<%= debug current_user %>
 <tr>
-  <th colspan="4"><span class="pull-right">Shipping To: Address</span></th>
+  <th colspan="4">
+    <span class="pull-right">
+      Shipping To:
+          <%= select_tag 'Address', options_for_select(Address.where(:user_id=>current_user.id).map{|el| [(el.addressline1 + " " + el.city), el.id]}) %>
+    </span>
+  </th>
 </tr>
 
 <tr>

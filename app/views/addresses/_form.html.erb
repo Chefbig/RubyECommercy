@@ -11,6 +11,11 @@
     </div>
   <% end %>
 
+    <div class="field">
+      <%= form.label :UserId %>
+      <%= form.text_field :user_id, id: :address_user_id, :readonly => true, :value => current_user.id %>
+    </div>
+
   <div class="field">
     <%= form.label :firstname %>
     <%= form.text_field :firstname, id: :address_firstname %>
@@ -40,6 +45,12 @@
     <%= form.label :city %>
     <%= form.text_field :city, id: :address_city %>
   </div>
+
+  <div class="field">
+      <%= form.label :province %>
+      <%= form.select(:province_id, options_for_select(Province.all.map{|p|[p.name, p.id]}, @address.province_id)) %>
+  </div>
+
 
   <div class="field">
     <%= form.label :postalcode %>
