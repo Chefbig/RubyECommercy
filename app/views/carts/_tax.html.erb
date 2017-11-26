@@ -1,33 +1,50 @@
-<%= debug current_user %>
-<tr>
-  <th colspan="4">
-    <span class="pull-right">
-      Shipping To:
-          <%= select_tag 'Address', options_for_select(Address.where(:user_id=>current_user.id).map{|el| [(el.addressline1 + " " + el.city), el.id]}) %>
-    </span>
-  </th>
-</tr>
+<% if Address.where(:user_id=> current_user.id, :is_billing_address => true).count <=0  %>
+    <tr><th>You need add a billing address. <% link_to "Add Billing Address", new_addresses_path %></th></tr>
+<% else %>
+    <% @tax_province = Address.where(:user_id=> current_user.id, :is_billing_address => true).first.province%>
+    <% @gst = @tax_province.gst * @sub_total %>
+    <% @pst = @tax_province.pst * @sub_total %>
+    <% @hst = @tax_province.hst * @sub_total %>
+    <% @qst = @tax_province.qst * @sub_total %>
+    <% @grant_total = @sub_total+ @gst + @pst + @hst + @qst %>
+    <tr>
+      <th colspan="4">
+        <span class="pull-right">
+          Shipping To:
+              <%= select_tag 'Address', options_for_select(Address.where(:user_id=>current_user.id).map{|el| [(el.addressline1 + " " + el.city), el.id]}) %>
+        </span>
+      </th>
+    </tr>
 
-<tr>
-  <th colspan="2"></th>
-  <th>GST</th>
-  <th><%= @sub_total %></th>
-</tr>
+    <% if @gst > 0  %>
+      <tr>
+        <th colspan="2"></th>
+        <th>GST</th>
+        <th><%= @gst  %></th>
+      </tr>
+    <% end %>
+    <% if @pst > 0  %>
+      <tr>
+        <th colspan="2"></th>
+        <th>PST</th>
+        <th><%= @pst %></th>
+      </tr>
+    <% end %>
 
-<tr>
-  <th colspan="2"></th>
-  <th>PST</th>
-  <th><%= @sub_total %></th>
-</tr>
+    <% if @hst > 0  %>
+        <tr>
+          <th colspan="2"></th>
+          <th>HST</th>
+          <th><%= @hst %></th>
+        </tr>
+    <% end %>
 
-<tr>
-  <th colspan="2"></th>
-  <th>HST</th>
-  <th><%= @sub_total %></th>
-</tr>
+    <% if @qst > 0  %>
+        <tr>
+          <th colspan="2"></th>
+          <th>QST</th>
+          <th><%= @qst %></th>
+        </tr>
+    <% end %>
 
-<tr>
-  <th colspan="2"></th>
-  <th>QST</th>
-  <th><%= @sub_total %></th>
-</tr>
+<%end%>
