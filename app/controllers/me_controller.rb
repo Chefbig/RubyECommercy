@@ -8,7 +8,7 @@ class MeController < ApplicationController
 
     @user_id = current_user.id
 
-    @my_addresses = Address.where(:user_id=>@user_id)
+    @addresses = Address.where(:user_id=>@user_id)
 
 
 
