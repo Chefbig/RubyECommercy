@@ -1,9 +1,4 @@
-<h1>Shopping Cart</h1><hr>
-<h3>Stripe Customer</h3>
-<%= debug @customer %>
-
-<h3>Stripe Charge</h3>
-<%= debug @charge %>
+<h3>Shopping Cart</h3><hr>
 <% if flash[:notice] %>
     <div class="notice"><%= flash[:notice] %></div>
 <% end %>
@@ -51,7 +46,17 @@
     </tr>
 
     <%= render "/carts/tax" %>
-    <%= render "/charges/payment"%>
+
+      <%= @grant_total = @sub_total %>
+      <% session[:order] = Hash.new %>
+      <% session[:order]["total"] = (@grant_total.to_f * 100).to_i %>
+      <% session[:order]['description'] = "Description" %>
+
+      <tr>
+        <th colspan="3"></th>
+        <th> <%= link_to 'Order Now!', new_charge_path %></th>
+      </tr>
+
 
   </tbody>
 </table>

@@ -6,7 +6,7 @@ class ChargesController < ApplicationController
 
   def create
 
-    amount = 500
+    amount = session[:order]["total"]
 
     @customer = Stripe::Customer.create(email: params[:stripeEmail],
                                         source: params[:stripeToken])
