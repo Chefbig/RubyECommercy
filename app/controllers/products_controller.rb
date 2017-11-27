@@ -30,7 +30,7 @@ class ProductsController < ApplicationController
 
 
       if params[:category].blank? || params[:category] == '10'
-        @products = Product.where("name like (?) OR description like (?)", keyword, keyword)
+        @products = Product.where("name like (?) OR description like (?)", keyword, keyword).order(:price)
       else
         cat = params[:category]
         @products = Category.find(cat).product.where("name like (?) OR description like (?)", keyword, keyword)
