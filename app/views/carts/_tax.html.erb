@@ -22,14 +22,14 @@
       <tr>
         <th colspan="2"></th>
         <th>GST</th>
-        <th><%= @gst  %></th>
+        <th><%= number_to_currency(@gst)  %></th>
       </tr>
     <% end %>
     <% if @pst > 0  %>
       <tr>
         <th colspan="2"></th>
         <th>PST</th>
-        <th><%= @pst %></th>
+        <th><%= number_to_currency(@pst) %></th>
       </tr>
     <% end %>
 
@@ -37,7 +37,7 @@
         <tr>
           <th colspan="2"></th>
           <th>HST</th>
-          <th><%= @hst %></th>
+          <th><%= number_to_currency(@hst) %></th>
         </tr>
     <% end %>
 
@@ -45,7 +45,7 @@
         <tr>
           <th colspan="2"></th>
           <th>QST</th>
-          <th><%= @qst %></th>
+          <th><%= number_to_currency(@qst) %></th>
         </tr>
     <% end %>
 

@@ -10,6 +10,8 @@ class MeController < ApplicationController
 
     @addresses = Address.where(:user_id=>@user_id)
 
+    @orders = Order.where(:user_id=>@user_id)
+
 
 
     #@addresses = Address.find()

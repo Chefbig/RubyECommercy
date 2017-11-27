@@ -1,49 +1,57 @@
 <p id="notice"><%= notice %></p>
+<h2>Order</h2>
+<table class="table table-striped table-hover table-bordered">
+  <thead>
+  <tr>
+    <th>Date</th>
+    <th>Order Total</th>
+    <th>Gst</th>
+    <th>Pst</th>
+    <th>Hst</th>
+    <th>Qst</th>
+    <th>Payment</th>
 
-<p>
-  <strong>Number:</strong>
-  <%= @order.number %>
-</p>
+    <th>State</th>
+    <th>Memo</th>
+  </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><%= @order.created_at %></td>
+        <td><%= @order.total %></td>
+        <td><%= @order.gst %></td>
+        <td><%= @order.pst %></td>
+        <td><%= @order.hst %></td>
+        <td><%= @order.qst %></td>
+        <td><%= number_to_currency(@order.payment) %></td>
+        <td><%= @order.state %></td>
+        <td><%= @order.memo %></td>
+      </tr>
+  </tbody>
+</table>
 
-<p>
-  <strong>Total:</strong>
-  <%= @order.total %>
-</p>
+</br>
 
-<p>
-  <strong>State:</strong>
-  <%= @order.state %>
-</p>
 
-<p>
-  <strong>Gst:</strong>
-  <%= @order.gst %>
-</p>
+<h3>Order Detail</h3>
+<table class="table table-striped table-hover table-bordered">
+  <thead>
+  <tr>
+    <th>Product</th>
+    <th>Quantity</th>
+    <th>Price</th>
+  </tr>
+  </thead>
 
-<p>
-  <strong>Pst:</strong>
-  <%= @order.pst %>
-</p>
+  <tbody>
+  <% @line_items.each do |line_item| %>
+      <tr>
+        <td><%= Product.find(line_item.product_id).name %></td>
+        <td><%= line_item.quantity %></td>
+        <td><%= number_to_currency(line_item.price) %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
 
-<p>
-  <strong>Hst:</strong>
-  <%= @order.hst %>
-</p>
-
-<p>
-  <strong>Qst:</strong>
-  <%= @order.qst %>
-</p>
-
-<p>
-  <strong>Payment:</strong>
-  <%= @order.payment %>
-</p>
-
-<p>
-  <strong>Memo:</strong>
-  <%= @order.memo %>
-</p>
-
-<%= link_to 'Edit', edit_order_path(@order) %> |
-<%= link_to 'Back', orders_path %>
+<%= link_to 'Back', me_show_path %>

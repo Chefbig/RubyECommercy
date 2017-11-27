@@ -26,6 +26,8 @@ class ChargesController < ApplicationController
       order.hst = session[:order]['hst']
       order.qst = session[:order]['qst']
       order.province_id = session[:order]['province_id']
+      order.user_id = current_user.id
+      order.payment = @charge.amount/100.0
 
       order.save
 
@@ -40,9 +42,9 @@ class ChargesController < ApplicationController
       end
 
       session[:cart].clear
-      flash[:notice] = "Payment of " + ActionController::Base.helpers.number_to_currency(@charge.amount/100) + " was success."
+      flash[:notice] = "Payment of " + ActionController::Base.helpers.number_to_currency(@charge.amount/100.0) + " was success."
     else
-      flash[:notice] = "Payment of " + ActionController::Base.helpers.number_to_currency(@charge.amount/100) + " was not success."
+      flash[:notice] = "Payment of " + ActionController::Base.helpers.number_to_currency(@charge.amount/100.0) + " was not success."
     end
   rescue Stripe::CardError => e
     flash[:error] = e.message

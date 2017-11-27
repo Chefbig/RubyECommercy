@@ -1,0 +1,10 @@
+<div>
+  <h3>Current Orders</h3>
+
+  <% if @orders.count >0 %>
+      <%= render '/orders/orders_index' %>
+  <% else %>
+      <p>You don't have any orders now.</p>
+      <p><%= link_to 'Please shop our awsome products', root_path %></p>
+  <% end %>
+</div>
