@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :orders
   resources :provinces
   resources :addresses
+
   get 'about/show'
 
   get 'categories/index'
