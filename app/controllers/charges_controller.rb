@@ -18,10 +18,29 @@ class ChargesController < ApplicationController
 
 
     if @charge.paid && @charge.amount == amount
-      #order = Order.create()
+      order = Order.new
+      order.total = session[:order]['total'] / 100.0
+      order.state = "Paid"
+      order.gst = session[:order]['gst']
+      order.pst = session[:order]['pst']
+      order.hst = session[:order]['hst']
+      order.qst = session[:order]['qst']
+      order.province_id = session[:order]['province_id']
+
+      order.save
+
+      session[:cart].each do  |key, value|
+        line_item = LineItem.new
+        line_item.order_id = order.id
+        line_item.product_id = key
+        line_item.quantity = value
+        line_item.price = Product.where(:id => key).first.price
+        line_item.save
+
+      end
+
       session[:cart].clear
       flash[:notice] = "Payment of " + ActionController::Base.helpers.number_to_currency(@charge.amount/100) + " was success."
-      flash[:error] = "Payment of " + ActionController::Base.helpers.number_to_currency(@charge.amount/100) + " was success."
     else
       flash[:notice] = "Payment of " + ActionController::Base.helpers.number_to_currency(@charge.amount/100) + " was not success."
     end

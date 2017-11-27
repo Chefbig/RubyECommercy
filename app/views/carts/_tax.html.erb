@@ -2,11 +2,13 @@
     <tr><th>You need add a billing address. <% link_to "Add Billing Address", new_addresses_path %></th></tr>
 <% else %>
     <% @tax_province = Address.where(:user_id=> current_user.id, :is_billing_address => true).first.province%>
-    <% @gst = @tax_province.gst * @sub_total %>
-    <% @pst = @tax_province.pst * @sub_total %>
-    <% @hst = @tax_province.hst * @sub_total %>
-    <% @qst = @tax_province.qst * @sub_total %>
-    <% @grant_total = @sub_total+ @gst + @pst + @hst + @qst %>
+
+    <% session[:order]['province_id'] = @tax_province.id %>
+    <% @gst = (@tax_province.gst * @sub_total).round(2) %>
+    <% @pst = (@tax_province.pst * @sub_total).round(2) %>
+    <% @hst = (@tax_province.hst * @sub_total).round(2) %>
+    <% @qst = (@tax_province.qst * @sub_total).round(2) %>
+    <% @grant_total = (@sub_total+ @gst + @pst + @hst + @qst).round(2) %>
     <tr>
       <th colspan="4">
         <span class="pull-right">

@@ -34,6 +34,7 @@
             <td><%= @line_total %></td>
           </tr>
       <% end %>
+      <% @sub_total =(@sub_total).round(2) %>
 
     <tr>
       <th><span class="pull-right">Sub Total</span></th>
@@ -44,9 +45,19 @@
 
     <%= render "/carts/tax" %>
 
-      <% session[:order] = Hash.new %>
-      <% session[:order]["total"] = (@grant_total.to_f * 100).to_i %>
+      <% session[:order]["total"] = (@grant_total * 100).to_i %>
+      <% session[:order]['gst'] = @gst%>
+      <% session[:order]['pst'] = @pst%>
+      <% session[:order]['hst'] = @hst%>
+      <% session[:order]['qst'] = @qst%>
       <% session[:order]['description'] = "Description: " + current_user.email + " "+ @grant_total.to_s %>
+
+      <tr>
+        <th><span class="pull-right">Grant Total</span></th>
+        <th></th>
+        <th></th>
+        <th><%= @grant_total %></th>
+      </tr>
 
       <tr>
         <th colspan="3"></th>

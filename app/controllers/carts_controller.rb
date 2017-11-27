@@ -22,6 +22,7 @@ class CartsController < ApplicationController
   def initialize_session
     if session[:cart].nil?
       session[:cart] = Hash.new
+      session[:order] = Hash.new
     end
   end
 end
