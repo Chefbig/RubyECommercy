@@ -1,8 +1,13 @@
 <% if Address.where(:user_id=> current_user.id, :is_billing_address => true).count <=0  %>
     <tr><th>You need add a billing address. <% link_to "Add Billing Address", new_addresses_path %></th></tr>
 <% else %>
+
+
     <% @tax_province = Address.where(:user_id=> current_user.id, :is_billing_address => true).first.province%>
 
+    <% if session[:order].nil? %>
+    <%    session[:order]=Hash.new %>
+    <% end %>
     <% session[:order]['province_id'] = @tax_province.id %>
     <% @gst = (@tax_province.gst * @sub_total).round(2) %>
     <% @pst = (@tax_province.pst * @sub_total).round(2) %>

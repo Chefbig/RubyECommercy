@@ -43,7 +43,8 @@
       <th><%= number_to_currency(@sub_total) %></th>
     </tr>
 
-    <%= render "/carts/tax" %>
+    <% if user_signed_in? %>
+      <%= render "/carts/tax" %>
 
       <% session[:order]["total"] = (@grant_total * 100).to_i %>
       <% session[:order]['gst'] = @gst%>
@@ -52,19 +53,22 @@
       <% session[:order]['qst'] = @qst%>
       <% session[:order]['description'] = "Description: " + current_user.email + " "+ @grant_total.to_s %>
 
+
       <tr>
         <th><span class="pull-right">Grant Total</span></th>
         <th></th>
         <th></th>
         <th><%= number_to_currency(@grant_total) %></th>
       </tr>
-
       <tr>
         <th colspan="3"></th>
         <th> <%= link_to 'Order Now!', new_charge_path %></th>
       </tr>
-
-
+  <% else %>
+    <tr>
+      <th colspan="4"><div class="alert alert-warning">Please sign in to get tax info and checkout</div></th>
+    </tr>
+  <% end %>
   </tbody>
 </table>
 <% end %>

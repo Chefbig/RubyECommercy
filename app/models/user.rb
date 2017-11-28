@@ -3,6 +3,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   has_many :addresses
 
+  validates :email, presence: true
+
   def name
     return email
   end

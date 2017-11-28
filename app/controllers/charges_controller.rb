@@ -1,5 +1,9 @@
 class ChargesController < ApplicationController
+  before_action :authenticate_user!
   def new
+    if session[:order].nil? || session[:order]["total"].nil? || session[:order]["total"] <=0
+      redirect_to root_path
+    end
     @amount = session[:order]["total"]
     @description = session[:order]['description']
   end
@@ -42,7 +46,7 @@ class ChargesController < ApplicationController
       end
 
       session[:cart].clear
-      flash[:notice] = "Payment of " + ActionController::Base.helpers.number_to_currency(@charge.amount/100.0) + " was success."
+      flash.now[:notice] = "Payment of " + ActionController::Base.helpers.number_to_currency(@charge.amount/100.0) + " was success."
     else
       flash[:notice] = "Payment of " + ActionController::Base.helpers.number_to_currency(@charge.amount/100.0) + " was not success."
     end
