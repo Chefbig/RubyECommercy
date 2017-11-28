@@ -5,6 +5,7 @@
 
     <% @tax_province = Address.where(:user_id=> current_user.id, :is_billing_address => true).first.province%>
 
+    <!--bad code here :( -->
     <% if session[:order].nil? %>
     <%    session[:order]=Hash.new %>
     <% end %>

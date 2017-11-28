@@ -24,6 +24,7 @@ class CartsController < ApplicationController
       session[:cart] = Hash.new
     end
 
+    # it seems this is not working
     if session[:order].nil?
       session[:order] = Hash.new
     end
